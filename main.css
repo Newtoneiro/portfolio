@@ -23,6 +23,14 @@ body {
   overflow-x: hidden; 
 }
 
+h1 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 900;
+  font-size: clamp(3rem, 12vw, 13rem);
+  line-height: 0.9;
+  color: rgb(var(--text-1));
+}
+
 /* ---------------- NAV ---------------- */
 nav {
   position: sticky;

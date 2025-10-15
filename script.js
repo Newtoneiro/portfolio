@@ -1,6 +1,8 @@
 document.addEventListener('DOMContentLoaded', async () => {
     await loadSections();
     initScrollingSections();
+    // initGreetings();
+    initScrollers();
 });
 
 async function loadSections() {
@@ -10,7 +12,7 @@ async function loadSections() {
   try {
     const sectionNames = [
       'introduction',
-      // 'carousel',
+      'projects',
     ];
 
     for (const name of sectionNames) {
@@ -47,4 +49,74 @@ const initScrollingSections = () => {
 
   const hiddenElements = document.querySelectorAll('.hidden');
   hiddenElements.forEach((el) => observer.observe(el));
+};
+
+const initGreetings = () => {
+  const possibleGreetings = [
+    "hello",
+    "hi",
+    "bonjour",
+    "cześć",
+    "hola",
+    "hallo",
+    "ciao",
+    "namaste",
+    "salut",
+    "hey"
+  ];
+
+  const greetingsText = document.getElementById("greeting");
+  let lastIndex = -1;
+
+  const updateGreeting = () => {
+    let randomIndex;
+
+    do {
+      randomIndex = Math.floor(Math.random() * possibleGreetings.length);
+    } while (randomIndex === lastIndex);
+
+    lastIndex = randomIndex;
+
+    const newGreeting = `${possibleGreetings[randomIndex]},`;
+    greetingsText.textContent = newGreeting;
+  };
+
+  updateGreeting();
+  setInterval(updateGreeting, 3000);
+};
+
+const initScrollers = () => {
+    const scrollers = document.querySelectorAll(".scroller");
+    
+    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      addAnimation();
+      addOnHover();
+    }
+    
+    function addAnimation() {
+      scrollers.forEach((scroller) => {
+        scroller.setAttribute("data-animated", true);
+    
+        const scrollerInner = scroller.querySelector(".scroller__inner");
+        const scrollerContent = Array.from(scrollerInner.children);
+    
+        scrollerContent.forEach((item) => {
+          const duplicatedItem = item.cloneNode(true);
+          duplicatedItem.setAttribute("aria-hidden", true);
+          scrollerInner.appendChild(duplicatedItem);
+        });
+      });
+    }
+
+    function addOnHover() {
+      const scrollerCards = document.querySelectorAll('.scroller__card');
+      scrollerCards.forEach((card) => {
+        card.addEventListener('mouseover', () => {
+          card.classList.add('highlighted');
+        });
+        card.addEventListener('mouseleave', () => {
+          card.classList.remove('highlighted');
+        })
+      })
+    }
 };
