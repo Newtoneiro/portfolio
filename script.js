@@ -1,42 +1,38 @@
-document.addEventListener('DOMContentLoaded', () => {
-    initGreetings();
+document.addEventListener('DOMContentLoaded', async () => {
+    await loadSections();
     initScrollingSections();
-    initCarousel();
 });
 
-const initGreetings = () => {
-  const possibleGreetings = [
-    "hello",
-    "hi",
-    "bonjour",
-    "cześć",
-    "hola",
-    "hallo",
-    "ciao",
-    "namaste",
-    "salut",
-    "hey"
-  ];
+async function loadSections() {
+  const sectionsFolder = 'sections';
+  const contentContainer = document.getElementById('content');
 
-  const greetingsText = document.getElementById("greeting");
-  let lastIndex = -1;
+  try {
+    const sectionNames = [
+      'introduction',
+      // 'carousel',
+    ];
 
-  const updateGreeting = () => {
-    let randomIndex;
+    for (const name of sectionNames) {
+      const res = await fetch(`${sectionsFolder}/${name}/main.html`);
+      const html = await res.text();
 
-    do {
-      randomIndex = Math.floor(Math.random() * possibleGreetings.length);
-    } while (randomIndex === lastIndex);
+      const sectionWrapper = document.createElement('div');
+      sectionWrapper.classList.add('section');
+      sectionWrapper.classList.add('hidden');
+      sectionWrapper.innerHTML = html;
+      contentContainer.appendChild(sectionWrapper);
 
-    lastIndex = randomIndex;
-
-    const newGreeting = `${possibleGreetings[randomIndex]},`;
-    greetingsText.textContent = newGreeting;
-  };
-
-  updateGreeting();
-  setInterval(updateGreeting, 3000);
-};
+      const link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.href = `${sectionsFolder}/${name}/styles.css`;
+      document.head.appendChild(link);
+    }
+  } catch (error) {
+    console.error('Error loading sections:', error);
+    contentContainer.innerHTML = '<p>Failed to load sections.</p>';
+  }
+}
 
 const initScrollingSections = () => {
   const observer = new IntersectionObserver((entries) => {
@@ -52,7 +48,3 @@ const initScrollingSections = () => {
   const hiddenElements = document.querySelectorAll('.hidden');
   hiddenElements.forEach((el) => observer.observe(el));
 };
-
-const initCarousel = () => {
-  
-}
