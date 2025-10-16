@@ -19,7 +19,7 @@ body {
   min-height: 100vh;
   color: rgb(var(--text-1));
   font-family: 'Roboto', sans-serif;
-  background: radial-gradient(circle at left, rgb(var(--text-2)) 0%, rgb(var(--background)) 60%);
+  background: rgb(var(--background));
   font-size: clamp(0.875rem, 1vw + 0.25rem, 1rem);
   line-height: 1.6;
 }
@@ -33,7 +33,7 @@ h1 {
   max-width: 90%;
 }
 
-p {
+p, a {
   font-family: 'Roboto', sans-serif;
   font-weight: 500;
   font-size: clamp(0.5rem, 1rem, 2rem);
