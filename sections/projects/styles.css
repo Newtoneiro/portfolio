@@ -2,26 +2,18 @@
   width: 100%;
   height: 100%;
   position: relative;
-
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
 }
 
 .scroller {
-  height: 33%;
-  flex: 1;
+  width: 80%;
 }
 
 .scroller[data-animated="true"] {
-  -webkit-mask: linear-gradient(
-    90deg,
-    transparent,
-    white 20%,
-    white 80%,
-    transparent
-  );
+  -webkit-mask: linear-gradient(90deg, transparent, white 20%, white 80%, transparent);
   mask: linear-gradient(90deg, transparent, white 20%, white 80%, transparent);
 }
 
@@ -34,8 +26,7 @@
 .scroller[data-animated="true"] .scroller__inner {
   width: max-content;
   flex-wrap: nowrap;
-  animation: scroll var(--_animation-duration, 60s)
-    var(--_animation-direction, forwards) linear infinite;
+  animation: scroll var(--_animation-duration, 60s) var(--_animation-direction, forwards) linear infinite;
 }
 
 .scroller[data-direction="right"] {
@@ -55,23 +46,29 @@
 }
 
 .scroller__inner {
-  padding-top: 2rem;
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-end;
-  gap: 2rem;
-  width: 100vw;
-  height: 100%;
+  justify-content: center;
+  padding-bottom: clamp(1rem, 2vw, 2rem);
+  gap: clamp(1rem, 2vw, 2rem);
+  width: 100%;
+  height: auto;
   box-sizing: border-box;
 }
 
 .scroller__card {
-  height: 100%;
+  height: 25vh;
   aspect-ratio: 1 / 1;
   opacity: 0.5;
   border-radius: 2em;
   overflow: hidden;
   transition: all 0.3s ease;
+}
+
+@media (max-width: 800px) {
+  .scroller__card {
+    height: 15vh;
+  }
 }
 
 .scroller__card > img {
@@ -91,7 +88,6 @@
   height: 100%;
   top: 0;
   left: 0;
-
   display: flex;
   align-items: center;
   justify-content: center;
@@ -103,7 +99,6 @@
 
 .scroller-left {
   box-sizing: border-box;
-
   display: flex;
   flex-direction: column;
   align-items: flex-end;
@@ -113,7 +108,6 @@
 .scroller-left h1 {
   margin-right: 10%;
   z-index: 10;
-  
   text-shadow: 8px -8px 3px rgb(var(--background));
   transition: transform 0.2s ease-in-out;
 }
@@ -123,5 +117,5 @@
 }
 
 .scroller-left h1 + .highlight {
-  text-shadow: 8px -8px 3px rgb(var(--text-2));
+  text-shadow: clamp(2px, 0.5vw, 8px) clamp(-2px, -0.5vw, -8px) clamp(1px, 0.3vw, 3px) rgb(var(--text-2));
 }
