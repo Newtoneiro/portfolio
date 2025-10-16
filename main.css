@@ -27,10 +27,17 @@ body {
 h1 {
   font-family: 'Poppins', sans-serif;
   font-weight: 900;
-  font-size: clamp(2rem, 5vw + 1rem, 10rem);
+  font-size: clamp(1rem, 4vw + 1rem, 8rem);
   color: rgb(var(--text-1));
   line-height: 1;
   max-width: 90%;
+}
+
+p {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  font-size: clamp(0.5rem, 1rem, 2rem);
+  text-shadow: 1px 1px 2px rgb(var(--background));
 }
 
 nav {
