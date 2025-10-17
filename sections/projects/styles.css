@@ -7,15 +7,11 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 2rem;
 }
 
 /* ===== Scroller ===== */
 .scroller {
-  width: 80%;
-  transform: rotate(-6deg);
-  perspective: 1200px;
-  perspective-origin: center;
+  width: 100%;
 }
 
 .scroller[data-animated="true"] {
@@ -25,8 +21,11 @@
 
 /* ===== Animation Keyframes ===== */
 @keyframes scroll {
+  from {
+    transform: translateX(0%);
+  }
   to {
-    transform: translateX(-40%);
+    transform: translateX(-20%);
   }
 }
 
@@ -55,34 +54,34 @@
 
 /* ===== Scroller Inner ===== */
 .scroller__inner {
-  transform: translateX(-5%) translateZ(-30px);
   display: flex;
   flex-wrap: nowrap;
   justify-content: center;
   align-items: center;
-  padding: 1rem 0;
-  gap: 2rem;
   width: max-content;
-  transform-style: preserve-3d;
 }
 
 /* ===== Individual Card ===== */
 .scroller__card {
   position: relative;
   height: 25vh;
-  aspect-ratio: 4 / 3;
-  border-radius: 12px;
+  aspect-ratio: 1 / 1;
   overflow: hidden;
   transition: all 0.3s ease;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+  border: 5px solid rgb(var(--background));
+  filter: brightness(75%);
 }
 
 /* Hover Effects */
 .scroller__card:hover {
-  transform: scale(1.05) translateZ(110px);
+  transform: translateZ(4rem);
   filter: brightness(100%);
-  z-index: 10;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+}
+
+.scroller__card:hover img {
+  transform: scale(1.1);
 }
 
 /* ===== Card Images ===== */
@@ -125,78 +124,29 @@
 
 /* ===== Scroller Overlay ===== */
 .scroller-overlay {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
+  align-self: flex-end;
+  background-color: rgb(var(--background));
+
   display: flex;
   align-items: center;
-  justify-content: center;
-}
-
-.scroller-overlay div {
-  flex: 1;
-}
-
-/* ===== Text Section ===== */
-.scroller-text {
-  position: absolute;
-  top: 50%;
-  left: 20%;
-  transform: translate(-20%, -50%);
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  justify-content: center;
+  justify-content: flex-end;
   z-index: 10;
-}
-
-.scroller-text h1 {
-  margin-right: 10%;
-  z-index: 10;
-  text-shadow: 6px 6px 0 rgb(var(--background)), -6px -6px 0 rgb(var(--background)), -6px 6px 0 rgb(var(--background)), 6px -6px 0 rgb(var(--background));
-  transform: rotate(-6deg);
-  transition: transform 0.2s ease-in-out;
-}
-
-.scroller-text h1+.highlight {
-  font-size: 12rem;
-  text-shadow: 8px 8px 0 rgb(var(--text-2)), -8px -8px 0 rgb(var(--text-2)), 8px -8px 0 rgb(var(--text-2)), -8px 8px 0 rgb(var(--text-2));
-}
-
-.scroller-text h1+.highlight:hover {
-  transform: scale(1.1) rotate(-5deg);
 }
 
 /* ===== Media Queries ===== */
 @media (max-width: 1200px) {
-  .scroller-wrapper { gap: 1.5rem; }
-  .scroller__inner { gap: 1.5rem; }
   .scroller__card>a { font-size: 0.9rem; }
-  .scroller-text h1+.highlight { font-size: 10rem; text-shadow: 6px 6px 0 rgb(var(--text-2)), -6px -6px 0 rgb(var(--text-2)), 6px -6px 0 rgb(var(--text-2)), -6px 6px 0 rgb(var(--text-2)); }
 }
 
 @media (max-width: 992px) {
-  .scroller-wrapper { gap: 1.2rem; }
-  .scroller__inner { gap: 1.2rem; }
   .scroller__card>a { font-size: 0.85rem; }
-  .scroller-text h1+.highlight { font-size: 6rem; text-shadow: 5px 5px 0 rgb(var(--text-2)), -5px -5px 0 rgb(var(--text-2)), 5px -5px 0 rgb(var(--text-2)), -5px 5px 0 rgb(var(--text-2)); }
 }
 
 @media (max-width: 768px) {
-  .scroller-wrapper { gap: 1rem; }
-  .scroller__inner { gap: 1rem; padding: 0.2rem; }
-  .scroller__card { height: 15vh; };
+  .scroller__card { height: 20vh; };
   .scroller__card>a { font-size: 0.8rem; }
-  .scroller-text { left: 50%; transform: translate(-50%, -50%); align-items: center; }
-  .scroller-text h1+.highlight { font-size: 3rem; text-shadow: 4px 4px 0 rgb(var(--text-2)), -4px -4px 0 rgb(var(--text-2)), 4px -4px 0 rgb(var(--text-2)), -4px 4px 0 rgb(var(--text-2)); }
 }
 
 @media (max-width: 480px) {
-  .scroller-wrapper { gap: 0.8rem; }
-  .scroller__inner { gap: 0.8rem; }
   .scroller__card>a { font-size: 0.7rem; }
-  .scroller-text h1+.highlight { font-size: 2rem; text-shadow: 2px 2px 0 rgb(var(--text-2)), -2px -2px 0 rgb(var(--text-2)), 2px -2px 0 rgb(var(--text-2)), -2px 2px 0 rgb(var(--text-2)); }
 }
