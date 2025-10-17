@@ -14,6 +14,7 @@ async function loadSections() {
     const sectionNames = [
       'introduction',
       'projects',
+      'experience',
     ];
 
     for (const name of sectionNames) {
