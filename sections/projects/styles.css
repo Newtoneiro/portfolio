@@ -7,12 +7,15 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 2rem;
 }
 
 /* ===== Scroller ===== */
 .scroller {
   width: 80%;
   transform: rotate(-6deg);
+  perspective: 1200px;
+  perspective-origin: center;
 }
 
 .scroller[data-animated="true"] {
@@ -20,16 +23,18 @@
   mask: linear-gradient(90deg, transparent, white 5%, white 95%, transparent);
 }
 
+/* ===== Animation Keyframes ===== */
 @keyframes scroll {
   to {
-    transform: translate(-40%);
+    transform: translateX(-40%);
   }
 }
 
+/* ===== Scroller Inner Wrapper ===== */
 .scroller[data-animated="true"] .scroller__inner {
   width: max-content;
-  flex-wrap: nowrap;
   animation: scroll var(--_animation-duration, 60s) var(--_animation-direction, forwards) linear infinite;
+  will-change: transform;
 }
 
 .scroller[data-direction="right"] {
@@ -50,15 +55,15 @@
 
 /* ===== Scroller Inner ===== */
 .scroller__inner {
+  transform: translateX(-5%) translateZ(-30px);
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   justify-content: center;
+  align-items: center;
   padding: 1rem 0;
   gap: clamp(1rem, 2vw, 2rem);
-  width: 100%;
-  height: auto;
-  box-sizing: border-box;
-  z-index: 1;
+  width: max-content;
+  transform-style: preserve-3d;
 }
 
 /* ===== Individual Card ===== */
@@ -69,11 +74,7 @@
   border-radius: 12px;
   overflow: hidden;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-}
-
-.scroller__card[size="large"] {
-  height: 35vh;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
 }
 
 /* Responsive Cards */
@@ -81,22 +82,18 @@
   .scroller__card {
     height: 10vh;
   }
-
-  .scroller__card[size="large"] {
-    height: 13vh;
-  }
 }
 
 /* Hover Effects */
 .scroller__card:hover {
-  transform: scale(1.05);
+  transform: scale(1.05) translateZ(110px);
   filter: brightness(100%);
   z-index: 10;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
 }
 
 /* ===== Card Images ===== */
-.scroller__card > img {
+.scroller__card>img {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -105,7 +102,7 @@
 }
 
 /* ===== Card Text Overlay ===== */
-.scroller__card > a {
+.scroller__card>a {
   text-decoration: none;
   position: absolute;
   padding: 0.5rem;
@@ -115,16 +112,16 @@
   margin: 0;
   text-align: center;
   color: #fff;
-  background: rgba(0,0,0,0.6);
+  background: rgba(0, 0, 0, 0.6);
   font-size: clamp(0.8rem, 1vw, 1rem);
   transition: all 0.3s ease;
 }
 
-.scroller__card > a > i {
+.scroller__card>a>i {
   margin-left: 0.5rem;
 }
 
-.scroller__card:hover > a {
+.scroller__card:hover>a {
   transform: scale(1.2) translateY(-0.5rem);
 }
 
@@ -149,31 +146,33 @@
   flex: 1;
 }
 
-/* ===== Left Section ===== */
-.scroller-left {
+/* ===== Text Section ===== */
+.scroller-text {
+  position: absolute;
+  top: 50%;
+  left: 20%;
+  transform: translate(-20%, -50%);
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
   justify-content: center;
+  z-index: 10;
 }
 
-.scroller-left h1 {
+.scroller-text h1 {
   margin-right: 10%;
   z-index: 10;
-  text-shadow: 8px 8px 0 rgb(var(--background));
+  text-shadow: 6px 6px 0 rgb(var(--background)), -6px -6px 0 rgb(var(--background)), -6px 6px 0 rgb(var(--background)), 6px -6px 0 rgb(var(--background));
+  transform: rotate(-6deg);
   transition: transform 0.2s ease-in-out;
 }
 
-.scroller-left h1:hover {
-  transform: translateX(-1rem);
+.scroller-text h1+.highlight {
+  font-size: clamp(4rem, 10vw + 1rem, 12rem);
+  text-shadow: clamp(2px, 0.5vw, 8px) clamp(2px, 0.5vw, 8px) 0 rgb(var(--text-2)), clamp(-2px, -0.5vw, -8px) clamp(-2px, -0.5vw, -8px) 0 rgb(var(--text-2)), clamp(2px, 0.5vw, 8px) clamp(-2px, -0.5vw, -8px) 0 rgb(var(--text-2)), clamp(-2px, -0.5vw, -8px) clamp(2px, 0.5vw, 8px) 0 rgb(var(--text-2));
 }
 
-.scroller-left h1 + .highlight {
-  transform: scale(1.5);
-  text-shadow: clamp(2px, 0.5vw, 8px) clamp(2px, 0.5vw, 8px) 0 rgb(var(--text-2));
-}
-
-.scroller-left h1 + .highlight:hover {
-  transform: scale(1.6);
+.scroller-text h1+.highlight:hover {
+  transform: scale(1.1) rotate(-5deg);
 }

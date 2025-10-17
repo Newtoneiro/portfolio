@@ -1,7 +1,8 @@
 document.addEventListener('DOMContentLoaded', async () => {
     await loadSections();
     initScrollingSections();
-    // initGreetings();
+    initNavBar();
+    initGreetings();
     initScrollers();
 });
 
@@ -20,6 +21,7 @@ async function loadSections() {
       const html = await res.text();
 
       const sectionWrapper = document.createElement('div');
+      sectionWrapper.id = name;
       sectionWrapper.classList.add('section');
       sectionWrapper.classList.add('hidden');
       sectionWrapper.innerHTML = html;
@@ -49,6 +51,18 @@ const initScrollingSections = () => {
 
   const hiddenElements = document.querySelectorAll('.hidden');
   hiddenElements.forEach((el) => observer.observe(el));
+};
+
+const initNavBar = () => {
+  const navSections = document.querySelectorAll('.nav-section');
+  const yOffset = -10;
+  navSections.forEach(navSection => {
+      const assignedSection = document.getElementById(navSection.getAttribute('section'));
+      navSection.addEventListener('click', () => {
+        const y = assignedSection.getBoundingClientRect().top + window.scrollY + yOffset;
+        window.scrollTo({top: y, behavior: 'smooth'});
+      })
+  });
 };
 
 const initGreetings = () => {

@@ -12,6 +12,12 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+
+  user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+
+  -webkit-user-drag: none;
 }
 
 body {
@@ -22,6 +28,8 @@ body {
   background: rgb(var(--background));
   font-size: clamp(0.875rem, 1vw + 0.25rem, 1rem);
   line-height: 1.6;
+  scroll-snap-type: none;
+  overscroll-behavior: contain;
 }
 
 h1 {
@@ -112,4 +120,32 @@ nav {
 
 .content {
   overflow: hidden;
+}
+
+
+/* ===== Introduction ===== */
+.section-introduction {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  
+  gap: clamp(5rem, 8vw, 10rem);
+  padding: clamp(0.8rem, 2vw, 1.2rem) clamp(1rem, 4vw, 4rem);
+  margin-bottom: clamp(0.1rem, 3vh, 4rem);
+}
+
+.section-introduction .title {
+  margin-top: 1rem;
+  text-align: right;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  color: rgb(var(--text-2));
+}
+
+.section-introduction .description {
+  max-width: 30vw;
+  text-align: justify;
+  font-size: clamp(1rem, 1.5vw + 1rem, 2rem);
+  font-weight: 400;
 }
