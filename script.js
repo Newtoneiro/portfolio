@@ -1,4 +1,4 @@
-const yOffset = -10;
+const yOffset = 0;
 
 
 document.addEventListener('DOMContentLoaded', async () => {
@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 async function loadSections() {
   const sectionsFolder = 'sections';
   const contentContainer = document.getElementById('content');
+  const sectionPointer = document.getElementById('sectionPointer');
 
   try {
     const sectionNames = [
@@ -37,6 +38,12 @@ async function loadSections() {
       link.rel = 'stylesheet';
       link.href = `${sectionsFolder}/${name}/styles.css`;
       document.head.appendChild(link);
+
+      // section pointer
+      const circle = document.createElement('div');
+      circle.id = `pointer_${name}`;
+      circle.classList.add('circle');
+      sectionPointer.appendChild(circle);
     }
   } catch (error) {
     console.error('Error loading sections:', error);
@@ -63,6 +70,7 @@ const initScrollSuggestion = () => {
 }
 
 const initScrollingSections = () => {
+  // Observer just handles adding/removing 'show' for sections
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
@@ -70,11 +78,38 @@ const initScrollingSections = () => {
       } else {
         entry.target.classList.remove('show');
       }
-    })
-  })
+    });
+  });
 
   const hiddenElements = document.querySelectorAll('.hidden');
   hiddenElements.forEach((el) => observer.observe(el));
+
+  const updatePointers = () => {
+    let mostVisible = null;
+    let maxVisibleHeight = 0;
+
+    hiddenElements.forEach((el) => {
+      const rect = el.getBoundingClientRect();
+      const visibleHeight = Math.min(rect.bottom, window.innerHeight) - Math.max(rect.top, 0);
+
+      if (visibleHeight > maxVisibleHeight) {
+        maxVisibleHeight = visibleHeight;
+        mostVisible = el;
+      }
+    });
+
+    document.querySelectorAll('.section-pointer .circle').forEach((c) => c.classList.remove('full'));
+
+    if (mostVisible) {
+      const circle = document.getElementById(`pointer_${mostVisible.id}`);
+      if (circle) circle.classList.add('full');
+    }
+  };
+
+  window.addEventListener('scroll', updatePointers);
+  window.addEventListener('resize', updatePointers);
+  
+  updatePointers();
 };
 
 const initNavBar = () => {

@@ -196,4 +196,8 @@
     width: 20%;
     height: 70%;
   }
+
+  .scroll-suggestion > i {
+    font-size: 0.8rem;
+  }
 }
