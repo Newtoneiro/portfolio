@@ -1,22 +1,25 @@
 .background {
-  flex: 1;
   width: 100%;
   height: 100%;
-  background: radial-gradient(circle at left bottom, rgb(var(--text-2)) 0%, rgb(var(--background)) 70%);
+  background: radial-gradient(circle at left bottom, rgb(var(--background-contrast)) 0%, rgb(var(--background)) 70%);
 
   display: flex;
   align-items: center;
   justify-content: center;
 
+  position: relative;
+
   mask: linear-gradient(0deg, transparent, white 20%);
 }
 
 .introduction {
+  max-width: fit-content;
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: clamp(0.4rem, 1vw, 1rem);
   padding: clamp(1rem, 6vw, 4rem);
+  margin-right: 10rem;
 }
 
 .introduction span {
@@ -115,4 +118,82 @@
 .introduction span:hover {
   transform: translateX(4px);
   opacity: 0.95;
+}
+
+/* profile pic */
+
+.image-container {
+  position: absolute;
+  top: 40%;
+  right: 0;
+  transform: translate(0%, -50%);
+  height: 100%;
+  padding: 5rem 20vw;
+  
+  z-index: -1;
+}
+
+.embelishement-1 {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 10%;
+  height: 70vh;
+  
+  background-color: rgb(var(--text-2));
+  z-index: -2;
+  mask-image: linear-gradient(to top, black 40%, transparent 100%);
+}
+
+.profile-picture {
+  height: 100%;
+  
+  -webkit-mask-image: radial-gradient(circle, black 50%, transparent 100%);
+  mask-image: radial-gradient(circle, black 50%, transparent 70%);
+  filter: grayscale(40%);
+}
+
+.scroll-suggestion {
+  position: absolute;
+  bottom: 10%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 5vh;
+  aspect-ratio: 1 / 1;
+
+  border-radius: 50%;
+  border: 2px solid rgb(var(--text-1));
+  z-index: 100;
+
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.scroll-suggestion:hover {
+  transform: translateY(-20px);
+}
+
+.scroll-suggestion > i {
+  font-size: 2rem;
+}
+
+/* ===== Media Queries ===== */
+@media (max-width: 1900px) {
+  .image-container {
+    padding: 5rem, 15vw;
+  }
+}
+@media (max-width: 1250px) {
+  .image-container {
+    height: 80vw;
+    padding: 0;
+  }
+
+  .embelishement-1 {
+    width: 20%;
+    height: 70%;
+  }
 }

@@ -124,7 +124,6 @@
 
 /* ===== Scroller Overlay ===== */
 .scroller-overlay {
-  align-self: flex-end;
   background-color: rgb(var(--background));
 
   display: flex;

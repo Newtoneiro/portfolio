@@ -1,5 +1,10 @@
+const yOffset = -10;
+
+
 document.addEventListener('DOMContentLoaded', async () => {
     await loadSections();
+    initHamburgerMenu();
+    initScrollSuggestion();
     initScrollingSections();
     initNavBar();
     initGreetings();
@@ -39,6 +44,24 @@ async function loadSections() {
   }
 }
 
+const initHamburgerMenu = () => {
+  const navToggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navCenter');
+
+  navToggle.addEventListener('click', () => {
+    navLinks.classList.toggle('show');
+  });
+};
+
+const initScrollSuggestion = () => {
+  const scroller = document.getElementById('scroll-suggestion');
+  const nextSection = document.querySelectorAll('#content .section')[1];
+  scroller.addEventListener('click', () => {
+    const y = nextSection.getBoundingClientRect().top + window.scrollY + yOffset;
+    window.scrollTo({top: y, behavior: 'smooth'});
+  })
+}
+
 const initScrollingSections = () => {
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
@@ -56,7 +79,6 @@ const initScrollingSections = () => {
 
 const initNavBar = () => {
   const navSections = document.querySelectorAll('.nav-section');
-  const yOffset = -10;
   navSections.forEach(navSection => {
       const assignedSection = document.getElementById(navSection.getAttribute('section'));
       navSection.addEventListener('click', () => {
