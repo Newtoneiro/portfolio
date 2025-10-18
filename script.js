@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     initNavBar();
     initGreetings();
     initScrollers();
+    initExperienceSection();
 });
 
 async function loadSections() {
@@ -192,3 +193,20 @@ const initScrollers = () => {
       })
     }
 };
+
+const initExperienceSection = () => {
+  const experienceSwitch = document.getElementById('experienceSwitch');
+  const sections = document.querySelectorAll('.experience-main');
+
+  experienceSwitch.addEventListener('click', () => {
+    experienceSwitch.classList.toggle('rotated');
+
+    sections.forEach(section => {
+      if (section.classList.contains('contracted')) {
+        section.classList.remove('contracted');
+      } else {
+        section.classList.add('contracted')
+      }
+    }); 
+  });
+}
