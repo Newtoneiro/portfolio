@@ -264,65 +264,67 @@
 }
 
 @media (max-width: 768px) {
+  .section[id='experience'] {
+    height: auto;
+  }
+
   .experience-title h1 {
     font-size: 4rem;
   }
   
   .experience-wrapper {
-    padding: 2vh 0;
+    height: auto;
+    overflow-y: visible;
     flex-direction: column;
     mask: none;
   }
+
+  .experience-body {
+    height: 100%;
+    min-height: fit-content;
+    overflow-y: visible;
+  }
   
   .experience-main {
-    width: 95%;
-    height: 100%;
-    padding: 0 5%;
-    align-items: flex-start;
-    justify-content: flex-start;
+    overflow: visible;
+    margin: 0;
+    width: 100%;
+    height: auto;
+    max-height: none;
+    padding: 2vh 5%;
   }
   
   .experience-main.contracted {
-    height: 10%;
     width: 100%;
-    align-items: center;
-    justify-content: flex-end;
-    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+  }
+    
+  .experience-main.contracted .experience-body {
+    max-height: 100vh;
+    opacity: 1;
+    transform: none;
+  }
+
+  .experience-main.contracted .experience-title {
+    text-transform: uppercase;
+    margin: 0 1.5vw;
+    border-bottom: 0.5vh solid rgb(var(--text-2));
   }
   
   .experience-main.contracted .experience-title h1 {
+    font-size: 4rem;
     transform: rotate(0deg);
   }
-  
+
   .experience-section p {
     width: 80vw;
   }
-  
-  .experience-switch::before,
-  .experience-switch::after {
-    margin: 0;
-    width: 5vw;
-    height: 1px;
-  }
-  
-  .experience-switch::before {
-    bottom: 50%;
-    left: 100%;
-    transform: translate(50%, 50%);
-  }
-  
-  .experience-switch::after {
-    top: 50%;
-    right: 100%;
-    transform: translate(-50%, 50%);
-  }
-  
-  .experience-switch i {
-    --rotation: 0deg;
-  }
-  
-  .experience-switch.rotated i {
-    --rotation: 180deg;
+
+  .experience-switch {
+    display: none;
   }
   
   .title {
@@ -336,21 +338,9 @@
 }
 
 @media (max-width: 480px) {
-  .experience-wrapper {
-    padding: 10vh 0;
-  }
-
-  .experience-title h1 {
+  .experience-title h1,
+  .experience-main.contracted .experience-title h1 {
     font-size: 2rem;
-  }
-
-  .experience-main {
-    width: 90%;
-    padding: 0 3%;
-  }
-
-  .experience-body {
-    justify-content: flex-start;
   }
 
   .title {
