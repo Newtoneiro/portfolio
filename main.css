@@ -20,7 +20,7 @@
 
 body {
   width: 100%;
-  min-height: 100vh;
+  min-height: 100lvh;
   color: rgb(var(--text-1));
   font-family: 'Roboto', sans-serif;
   background: rgb(var(--background));
@@ -114,7 +114,7 @@ nav {
   justify-content: center;
 
   width: 100vw;
-  height: 100vh;
+  height: 100lvh;
 }
 
 .hidden {
@@ -151,13 +151,13 @@ nav {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 1vh;
+  gap: 1lvh;
   padding: 1.5em;
   z-index: 1000;
 }
 
 .circle {
-  height: 1vh;
+  height: 1lvh;
   aspect-ratio: 1 / 1;
   border-radius: 50%;
 
