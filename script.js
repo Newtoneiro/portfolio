@@ -100,10 +100,13 @@ const initScrollingSections = () => {
     });
 
     document.querySelectorAll('.section-pointer .circle').forEach((c) => c.classList.remove('full'));
+    document.querySelectorAll('.nav-section').forEach((c) => c.classList.remove('selected'));
 
     if (mostVisible) {
       const circle = document.getElementById(`pointer_${mostVisible.id}`);
       if (circle) circle.classList.add('full');
+      const navSection = document.querySelector(`.nav-section[section="${mostVisible.id}"]`);
+      if (navSection) navSection.classList.add('selected');
     }
   };
 
