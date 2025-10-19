@@ -95,3 +95,53 @@
   cursor: pointer;
   transform: translateY(-4px);
 }
+
+@media (max-width: 1200px) {
+  .about-me-footer {
+    padding: 0 2rem;
+  }
+
+  .contact-main {
+    padding: 0;
+  }
+
+  .contact-links {
+    gap: 3rem;
+  }
+
+  .contact-main .title {
+    font-size: 1.5rem;
+  }
+
+  .contact-entries .entry {
+    font-size: 1rem;
+  }
+
+  .contact-links i {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 478px) {
+  .about-me-footer {
+    padding: 0 1rem;
+  }
+
+  .contact-links {
+    gap: 1.5rem;
+  }
+  
+  .contact-main .title {
+    font-size: 1rem;
+  }
+  
+  .contact-entries .entry {
+    font-size: 0.7rem;
+  }
+  
+  .contact-links i {
+    font-size: 1.2rem;
+  }
+  
+}
+
