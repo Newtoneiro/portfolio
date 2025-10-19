@@ -166,7 +166,7 @@
   border-left: 3px solid rgb(var(--text-2));
   mask: linear-gradient(0deg, transparent 0%, white 2%, white 98%, transparent);
   -webkit-mask: linear-gradient(0deg, transparent 0%, white 2%, white 98%,transparent);
-  opacity: 0.9 ;
+  opacity: 0.9;
 }
 
 /* ===== Media Queries ===== */
@@ -180,6 +180,12 @@
   .scroller-overlay {
     -webkit-mask: linear-gradient(0deg, transparent, white 15%);
     mask: linear-gradient(0deg, transparent, white 15%);
+  }
+  .scroller {
+    flex: 1;
+  }
+  .scroller__card {
+    height: 24.5vh;
   }
   .scroller__card>a { font-size: 0.9rem; }
   .scroller-overlay {
@@ -197,9 +203,9 @@
 }
 
 @media (max-width: 768px) {
-  .scroller__card { height: 20vh; };
+  .scroller__card { height: 25vh; };
   .scroller__card>a { font-size: 0.8rem; }
-  .section-introduction { padding: 0.5rem 2rem; }
+  .section-introduction { padding: 0 2rem; }
   .section-introduction .title { font-size: 1.5rem; }
   .section-introduction .description { font-size: 1rem; }
 }
