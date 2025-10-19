@@ -181,9 +181,6 @@
     -webkit-mask: linear-gradient(0deg, transparent, white 15%);
     mask: linear-gradient(0deg, transparent, white 15%);
   }
-  .scroller-wrapper {
-    justify-content: flex-end;
-  }
   .scroller__card>a { font-size: 0.9rem; }
   .scroller-overlay {
     position: relative;
@@ -203,10 +200,12 @@
   .scroller__card { height: 20vh; };
   .scroller__card>a { font-size: 0.8rem; }
   .section-introduction { padding: 0.5rem 2rem; }
-  .section-introduction .title { font-size: 1rem; }
-  .section-introduction .description { font-size: 0.8rem; }
+  .section-introduction .title { font-size: 1.5rem; }
+  .section-introduction .description { font-size: 1rem; }
 }
 
 @media (max-width: 480px) {
+  .section-introduction .title { font-size: 1rem; }
+  .section-introduction .description { font-size: 0.8rem; }
   .scroller__card>a { font-size: 0.7rem; }
 }
