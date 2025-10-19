@@ -67,7 +67,7 @@
   height: 30vh;
   aspect-ratio: 1 / 1;
   overflow: hidden;
-  transition: all 0.3s ease;
+  transition: filter 0.3s ease;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
   border: 5px solid rgb(var(--background));
   filter: brightness(75%);
@@ -106,7 +106,7 @@
   color: #fff;
   background: rgba(0, 0, 0, 0.6);
   font-size: 1rem;
-  transition: all 0.3s ease;
+  transition: transform 0.3s ease;
 }
 
 .scroller__card>a>i {
@@ -146,12 +146,6 @@
   font-weight: 100;
   font-size: 1.2rem;
   color: rgb(var(--highlight-1));
-}
-
-
-/* ===== Highlight Animation ===== */
-.highlighted {
-  transition: all 0.2s ease-in-out;
 }
 
 /* ===== Scroller Overlay ===== */
