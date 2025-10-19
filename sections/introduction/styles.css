@@ -187,6 +187,61 @@
     padding: 5rem, 15vw;
   }
 }
+
+@media (max-height: 800px) {
+  .background {
+    padding: 5%;
+  }
+
+  .image-container img {
+    padding: 20%
+  }
+
+  .introduction span {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-height: 350px) {
+  .introduction {
+    width: 40%;
+    max-width: 40%;
+    margin: 0;
+    padding: 0;
+    gap: 0.1rem;
+  }
+
+  .introduction > button {
+    margin: 0.5rem 0;
+    padding: 0.2rem;
+    max-width: 30vw;
+  }
+
+  .background {
+    padding: 5%;
+  }
+
+  .image-container img {
+    padding: 40% 35%;
+  }
+
+  .introduction span {
+    font-size: 1rem;
+  }
+
+  .introduction > .links {
+    margin: 0;
+  }
+
+  .links i {
+    font-size: 1rem;
+  }
+
+  .scroll-suggestion > i {
+    font-size: 0.5rem;
+  }
+}
+
 @media (max-width: 1250px) {
   .image-container {
     height: 80vw;
@@ -200,5 +255,11 @@
 
   .scroll-suggestion > i {
     font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .scroll-suggestion > i {
+    font-size: 0.5rem;
   }
 }

@@ -2,11 +2,13 @@
 .scroller-wrapper {
   width: 100%;
   height: 100%;
+  max-height: 100vh;
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
 }
 
 /* ===== Scroller ===== */
@@ -199,12 +201,28 @@
   }
 }
 
+@media (max-height: 700px) {
+  .scroller {
+    min-height: 25vh;
+  }
+
+  .section-introduction .description {
+    max-width: 100%;
+    font-size: 0.8rem;
+  }
+
+  .section-introduction .title {
+    font-size: 1rem;
+  }
+
+  .scroller__card>a { opacity: 0; height: 100%; top: 0; left: 0}
+}
+
 @media (max-width: 992px) {
   .scroller__card>a { font-size: 0.85rem; }
 }
 
 @media (max-width: 768px) {
-  .scroller__card { height: 25vh; };
   .scroller__card>a { font-size: 0.8rem; }
   .section-introduction .title { font-size: 1.5rem; }
   .section-introduction .description { font-size: 1rem; }
