@@ -25,7 +25,7 @@
     transform: translateX(0%);
   }
   to {
-    transform: translateX(-20%);
+    transform: translateX(-30%);
   }
 }
 
@@ -64,7 +64,7 @@
 /* ===== Individual Card ===== */
 .scroller__card {
   position: relative;
-  height: 25vh;
+  height: 30vh;
   aspect-ratio: 1 / 1;
   overflow: hidden;
   transition: all 0.3s ease;
@@ -117,6 +117,37 @@
   transform: scale(1.2) translateY(-0.5rem);
 }
 
+.section-introduction {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+
+  gap: 1rem;
+  padding: 1.2rem 4rem;
+  margin: 0;
+
+  z-index: 10;
+}
+
+.section-introduction .title {
+  padding: 1vh 0;
+  text-transform: uppercase;
+  border-bottom: 0.5vh solid rgb(var(--text-2));
+  color: rgb(var(--text-2));
+  font-weight: 600;
+  font-size: 4rem;
+}
+
+.section-introduction .description {
+  margin-bottom: 2vh;
+  font-weight: 100;
+  font-size: 1.2rem;
+  color: rgb(var(--highlight-1));
+}
+
+
 /* ===== Highlight Animation ===== */
 .highlighted {
   transition: all 0.2s ease-in-out;
@@ -124,17 +155,38 @@
 
 /* ===== Scroller Overlay ===== */
 .scroller-overlay {
-  background-color: rgb(var(--background));
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: 30vw;
+  background: radial-gradient(circle at left, rgb(var(--background-contrast)) 0%, rgb(var(--background)) 70%);
 
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: center;
   z-index: 10;
+
+  border-left: 3px solid rgb(var(--text-2));
+  mask: linear-gradient(0deg, transparent 0%, white 2%, white 98%, transparent);
+  -webkit-mask: linear-gradient(0deg, transparent 0%, white 2%, white 98%,transparent);
+  opacity: 0.9 ;
 }
 
 /* ===== Media Queries ===== */
 @media (max-width: 1200px) {
+  .scroller-wrapper {
+    justify-content: flex-end;
+  }
   .scroller__card>a { font-size: 0.9rem; }
+  .scroller-overlay {
+    position: relative;
+    flex-direction: column;
+    width: 100%;
+    height: 25vh;
+    border: none;
+    opacity: 1;
+  }
 }
 
 @media (max-width: 992px) {

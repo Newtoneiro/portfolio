@@ -18,8 +18,8 @@
   background: radial-gradient(circle at right 90%, 
     rgb(var(--background-contrast)) 0%, 
     rgb(var(--background)) 70%);
-  mask: linear-gradient(0deg, white 70%, transparent);
-  -webkit-mask: linear-gradient(0deg, white 70%, transparent);
+  mask: linear-gradient(0deg, transparent 0%, white 30%, white 70%, transparent);
+  -webkit-mask: linear-gradient(0deg, transparent 0%, white 30%, white 70%, transparent);
   z-index: 0;
 }
 

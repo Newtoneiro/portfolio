@@ -141,38 +141,6 @@ nav {
   overflow: hidden;
 }
 
-/* ===== Introduction ===== */
-.section-introduction {
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  justify-content: flex-end;
-  
-  gap: 10rem;
-  padding: 1.2rem 4rem;
-  margin: 2rem 0;
-
-  mask: white;
-  z-index: 10;
-}
-
-.section-introduction .title {
-  margin-top: 1rem;
-  text-align: right;
-  text-transform: uppercase;
-  letter-spacing: 0.1rem;
-  font-size: 1.5rem;
-  color: rgb(var(--text-2));
-}
-
-.section-introduction .description {
-  max-width: 25vw;
-  text-align: justify;
-  font-size: 2rem;
-  font-weight: 400;
-}
-
 .section-pointer {
   position: fixed;
   top: 50%;
@@ -213,7 +181,7 @@ nav {
   .nav-section { font-size: 0.75rem; }
   .section-introduction { gap: 4rem; padding: 0.8rem 1.5rem; margin-bottom: 1.5rem; }
   .section-introduction .title { font-size: 1.3rem; }
-  .section-introduction .description { font-size: 1.5rem; max-width: 40vw; }
+  .section-introduction .description { font-size: 1.5rem; }
 }
 
 @media (max-width: 768px) {
@@ -226,7 +194,7 @@ nav {
   .nav-center { justify-self: end;}
   .section-introduction { flex-direction: column; gap: 2rem; padding: 0.7rem 1rem; margin-bottom: 1rem; }
   .section-introduction .title { text-align: center; font-size: 1.1rem; }
-  .section-introduction .description { font-size: 1rem; max-width: 50vw; }
+  .section-introduction .description { font-size: 1rem; }
 }
 
 @media (max-width: 480px) {
@@ -261,6 +229,6 @@ nav {
   .nav-logo { font-size: 0.9rem; }
   .nav-section { font-size: 0.65rem; }
   .section-introduction { gap: 1.5rem; padding: 0.5rem 0.8rem; margin-bottom: 0.8rem; }
-  .section-introduction .title { text-align: center; font-size: 1rem; width: 100%; }
-  .section-introduction .description { font-size: 0.85rem; text-align: center; }
+  .section-introduction .title { text-align: left; font-size: 1rem; width: 100%; }
+  .section-introduction .description { font-size: 0.85rem; text-align: justify; }
 }

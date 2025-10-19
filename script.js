@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     initGreetings();
     initScrollers();
     initExperienceSection();
+    loadContact();
 });
 
 async function loadSections() {
@@ -22,6 +23,7 @@ async function loadSections() {
       'introduction',
       'projects',
       'experience',
+      'about-me',
     ];
 
     for (const name of sectionNames) {
@@ -45,11 +47,19 @@ async function loadSections() {
       circle.id = `pointer_${name}`;
       circle.classList.add('circle');
       sectionPointer.appendChild(circle);
+
     }
   } catch (error) {
     console.error('Error loading sections:', error);
     contentContainer.innerHTML = '<p>Failed to load sections.</p>';
   }
+  // introduction contact
+  const contactButton = document.getElementById('contactButton');
+  const contactSection = document.getElementById('about-me');
+  contactButton.addEventListener('click', () => {
+    const y = contactSection.getBoundingClientRect().top + window.scrollY + yOffset;
+    window.scrollTo({top: y, behavior: 'smooth'});
+  })
 }
 
 const initHamburgerMenu = () => {
@@ -212,4 +222,12 @@ const initExperienceSection = () => {
       }
     }); 
   });
-}
+};
+
+const loadContact = () => {
+  const e = [['latosek.bar', 'gmail'].join('@'), 'com'].join('.');
+  const p = '(+48) 728 248 145';
+
+  document.getElementById('email').innerHTML += e;
+  document.getElementById('phone').innerHTML += p;
+};
