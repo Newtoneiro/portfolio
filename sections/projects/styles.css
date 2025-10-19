@@ -141,6 +141,7 @@
 }
 
 .section-introduction .description {
+  text-align: justify;
   margin-bottom: 2vh;
   font-weight: 100;
   font-size: 1.2rem;
@@ -174,7 +175,17 @@
 }
 
 /* ===== Media Queries ===== */
+@media (max-width: 1450px) {
+  .section-introduction .title {
+    font-size: 3rem;
+  }
+}
+
 @media (max-width: 1200px) {
+  .scroller-overlay {
+    -webkit-mask: linear-gradient(0deg, transparent, white 15%);
+    mask: linear-gradient(0deg, transparent, white 15%);
+  }
   .scroller-wrapper {
     justify-content: flex-end;
   }
@@ -196,6 +207,9 @@
 @media (max-width: 768px) {
   .scroller__card { height: 20vh; };
   .scroller__card>a { font-size: 0.8rem; }
+  .section-introduction { padding: 0.5rem 2rem; }
+  .section-introduction .title { font-size: 1rem; }
+  .section-introduction .description { font-size: 0.8rem; }
 }
 
 @media (max-width: 480px) {
