@@ -263,6 +263,10 @@
 }
 
 @media (max-width: 768px) {
+  .experience-wrapper,
+  .experience-main,
+  .experience-body,
+  .experience-body-inner,
   .section[id='experience'] {
     height: auto;
   }
@@ -272,14 +276,12 @@
   }
   
   .experience-wrapper {
-    height: auto;
     overflow-y: visible;
     flex-direction: column;
     mask: none;
   }
 
   .experience-body {
-    height: 100%;
     min-height: fit-content;
     overflow-y: visible;
   }
@@ -288,9 +290,9 @@
     overflow: visible;
     margin: 0;
     width: 100%;
-    height: auto;
     max-height: none;
     padding: calc(var(--vh) * 2) 5%;
+    transition: none;
   }
   
   .experience-main.contracted {

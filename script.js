@@ -81,6 +81,15 @@ const initHamburgerMenu = () => {
   navToggle.addEventListener('click', () => {
     navLinks.classList.toggle('show');
   });
+  document.addEventListener('click', (e) => {
+    if (
+      navLinks.classList.contains('show') &&
+      !navLinks.contains(e.target) &&
+      !navToggle.contains(e.target)
+    ) {
+      navLinks.classList.remove('show');
+    }
+  });
 };
 
 const initScrollSuggestion = () => {
