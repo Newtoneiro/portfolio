@@ -58,7 +58,10 @@
   text-shadow: 2px 2px 3px rgb(var(--text-2));
   letter-spacing: clamp(0.05rem, 0.3vw, 0.2rem);
   text-transform: capitalize;
-  animation: scroll-horizontal 3s infinite;
+}
+
+.greeting.animation {
+  animation: scroll-horizontal 3s ease;
 }
 
 /* Button */
@@ -138,7 +141,7 @@
   top: 0;
   left: 50%;
   width: 10%;
-  height: 70lvh;
+  height: calc(var(--vh) * 70);
   
   background-color: rgb(var(--text-2));
   z-index: -2;
@@ -161,8 +164,8 @@
   align-items: center;
   justify-content: center;
 
-  height: 5lvh;
-  width: 5lvh;
+  height: calc(var(--vh) * 5);
+  width: calc(var(--vh) * 5);
   aspect-ratio: 1 / 1;
 
   border-radius: 50%;
@@ -260,6 +263,6 @@
 
 @media (max-width: 768px) {
   .scroll-suggestion > i {
-    font-size: 0.5rem;
+    font-size: 0.6rem;
   }
 }

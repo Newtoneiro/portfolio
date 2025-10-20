@@ -20,14 +20,14 @@
 
 body {
   width: 100%;
-  min-height: 100lvh;
+  min-height: calc(var(--vh) * 100);
   color: rgb(var(--text-1));
   font-family: 'Roboto', sans-serif;
   background: rgb(var(--background));
   font-size: 1rem;
   line-height: 1.6;
   scroll-snap-type: none;
-  overscroll-behavior: contain;
+  overscroll-behavior: none;
 }
 
 h1 {
@@ -114,7 +114,7 @@ nav {
   justify-content: center;
 
   width: 100vw;
-  height: 100lvh;
+  height: calc(var(--vh) * 100);
 }
 
 .hidden {
@@ -151,13 +151,13 @@ nav {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 1lvh;
+  gap: calc(var(--vh) * 1);
   padding: 1.5em;
   z-index: 1000;
 }
 
 .circle {
-  height: 1lvh;
+  height: calc(var(--vh) * 1);
   aspect-ratio: 1 / 1;
   border-radius: 50%;
 

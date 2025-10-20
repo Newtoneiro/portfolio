@@ -2,6 +2,7 @@ const yOffset = 0;
 
 
 document.addEventListener('DOMContentLoaded', async () => {
+    setVHUnit();
     await loadSections();
     initHamburgerMenu();
     initScrollSuggestion();
@@ -12,6 +13,17 @@ document.addEventListener('DOMContentLoaded', async () => {
     initExperienceSection();
     loadContact();
 });
+
+function setVHUnit() {
+  const calcVHUnit = () => {
+    const vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+  }
+
+  // set on load
+  calcVHUnit();
+  window.addEventListener('resize', calcVHUnit);
+};
 
 async function loadSections() {
   const sectionsFolder = 'sections';
@@ -160,11 +172,16 @@ const initGreetings = () => {
     do {
       randomIndex = Math.floor(Math.random() * possibleGreetings.length);
     } while (randomIndex === lastIndex);
-
+    
     lastIndex = randomIndex;
-
+    
     const newGreeting = `${possibleGreetings[randomIndex]},`;
     greetingsText.textContent = newGreeting;
+    // retrigger the animation properly
+    greetingsText.classList.remove('animation');
+    // force reflow to restart animation
+    void greetingsText.offsetWidth;
+    greetingsText.classList.add('animation');
   };
 
   updateGreeting();
