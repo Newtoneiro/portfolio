@@ -310,6 +310,7 @@
     max-height: calc(var(--vh) * 100);
     opacity: 1;
     transform: none;
+    padding: 1.5vw 1.5vw;
   }
 
   .experience-main.contracted .experience-title {

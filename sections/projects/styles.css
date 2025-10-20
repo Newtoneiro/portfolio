@@ -207,16 +207,14 @@
 
   .section-introduction .description {
     margin: 0;
+    width: 50%;
   }
 }
 
 @media (max-height: 700px) {
-  .scroller {
-    min-height: calc(var(--vh) * 25);
-  }
 
   .section-introduction .description {
-    max-width: 100%;
+    width: 100%;
     font-size: 0.8rem;
   }
 
@@ -233,9 +231,9 @@
 
 @media (max-width: 768px) {
   .scroller__card>a { font-size: 0.8rem; }
-  .section-introduction { flex-direction: column; }
+  .section-introduction { flex-direction: column; padding: 1rem; }
   .section-introduction .title { font-size: 1.5rem; }
-  .section-introduction .description { font-size: 1rem; }
+  .section-introduction .description { font-size: 1rem; width: 100%; }
 }
 
 @media (max-width: 480px) {
