@@ -55,6 +55,7 @@
   max-height: 0;
   transform: translateX(-5vw);
   pointer-events: none;
+  padding: 0;
 }
 
 /* === TITLE AREA === */
