@@ -199,38 +199,36 @@ const initGreetings = () => {
 
 const initScrollers = () => {
   const scrollers = Array.from(document.querySelectorAll('.scroller'));
-
+  
   scrollers.forEach(scroller => {
     const cards = Array.from(scroller.querySelectorAll('.scroller_card'));
     const leftBtn = scroller.querySelector('.scroll-left');
     const rightBtn = scroller.querySelector('.scroll-right');
-
+    
     if (cards.length === 0) return;
-
+    
     let currentIndex = 0;
-
-    // Initialize first active card
+    
     cards.forEach((card, i) => {
       card.classList.toggle('active', i === 0);
     });
-
+    
     function showCard(index) {
       cards.forEach((card, i) => {
         card.classList.toggle('active', i === index);
       });
     }
-
+    
     leftBtn?.addEventListener('click', () => {
       currentIndex = (currentIndex - 1 + cards.length) % cards.length;
       showCard(currentIndex);
     });
-
+    
     rightBtn?.addEventListener('click', () => {
       currentIndex = (currentIndex + 1) % cards.length;
       showCard(currentIndex);
     });
-
-    // Store helper on scroller
+    
     scroller.showNextRandomCard = () => {
       let randomIndex;
       do {
@@ -240,24 +238,23 @@ const initScrollers = () => {
       showCard(currentIndex);
     };
   });
-
-  // 🔁 Iterate through scrollers every 5 seconds
+  
+  const autoScrollers = Array.from(document.querySelectorAll('.projects-main .scroller'));
   let currentScrollerIndex = 0;
   setInterval(() => {
-    if (scrollers.length === 0) return;
-
-    const scroller = scrollers[currentScrollerIndex];
+    if (autoScrollers.length === 0) return;
+    
+    const scroller = autoScrollers[currentScrollerIndex];
     scroller.showNextRandomCard();
-
-    // move to next scroller, loop back at end
-    currentScrollerIndex = (currentScrollerIndex + 1) % scrollers.length;
+    
+    currentScrollerIndex = (currentScrollerIndex + 1) % autoScrollers.length;
   }, 4000);
 };
 
 const initExperienceSection = () => {
   const experienceSwitch = document.getElementById('experienceSwitch');
   const sections = document.querySelectorAll('.experience-main');
-
+  
   experienceSwitch.addEventListener('click', () => {
     experienceSwitch.classList.toggle('rotated');
 
