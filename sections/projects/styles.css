@@ -1,128 +1,107 @@
 /* ===== Scroller Wrapper ===== */
-.scroller-wrapper {
+.projects-wrapper {
   position: relative;
   width: 100%;
-  height: auto;
-  min-height: calc(var(--vh) * 100);
+  height: calc(var(--vh) * 100);
 
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  
+  background: radial-gradient(circle at top, rgb(var(--background)) 20%, rgb(var(--background-contrast)) 90%);
+  mask: linear-gradient(0deg, transparent, white 10%, white 90%, transparent);
 }
 
-/* ===== Scroller ===== */
+.projects-main {
+    width: 80%;
+    height: 80%;
+    
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+.projects-display-1 {
+    grid-column: 1 / span 2;
+    grid-row: 1 / span 2;
+}
+
+.projects-display-2 {
+    grid-column: 3 / span 1;
+    grid-row: 1 / span 1;
+    border-left: 1rem solid rgb(var(--background));
+}
+
+.projects-display-3 {
+    grid-column: 4 / span 1;
+    grid-row: 1 / span 1;
+    border-left: 1rem solid rgb(var(--background));
+}
+
+.projects-description {
+    grid-column: 3 / span 2;
+    grid-row: 2 / span 1;
+    background-color: rgb(var(--background));
+}
+
 .scroller {
-  flex: 1;
-  width: 100%;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
 }
 
-.scroller[data-animated="true"] {
-  -webkit-mask: linear-gradient(90deg, transparent, white 5%, white 95%, transparent);
-  mask: linear-gradient(90deg, transparent, white 5%, white 95%, transparent);
+.scroller_card {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: hidden;
 }
 
-/* ===== Animation Keyframes ===== */
-@keyframes scroll {
-  from {
-    transform: translateX(0%);
-  }
-  to {
-    transform: translateX(-30%);
-  }
-}
-
-/* ===== Scroller Inner Wrapper ===== */
-.scroller[data-animated="true"] .scroller__inner {
-  width: max-content;
-  animation: scroll var(--_animation-duration, 60s) var(--_animation-direction, forwards) linear infinite;
-  will-change: transform;
-}
-
-.scroller[data-direction="right"] {
-  --_animation-direction: reverse;
-}
-
-.scroller[data-direction="left"] {
-  --_animation-direction: forwards;
-}
-
-.scroller[data-speed="fast"] {
-  --_animation-duration: 20s;
-}
-
-.scroller[data-speed="slow"] {
-  --_animation-duration: 60s;
-}
-
-/* ===== Scroller Inner ===== */
-.scroller__inner {
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: max-content;
-}
-
-/* ===== Individual Card ===== */
-.scroller__card {
-  position: relative;
-  height: 100%;
-  aspect-ratio: 1 / 1;
-  overflow: hidden;
-  transition: filter 0.3s ease;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
-  border: 5px solid rgb(var(--background));
-  filter: brightness(75%);
-}
-
-/* Hover Effects */
-.scroller__card:hover {
-  transform: translateZ(4rem);
-  filter: brightness(100%);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
-}
-
-.scroller__card:hover img {
-  transform: scale(1.1);
-}
-
-/* ===== Card Images ===== */
-.scroller__card>img {
+.scroller_card > img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
   transition: all 0.3s ease;
+  opacity: 0.6;
+  filter: brightness(50%) grayscale(80%);
+  transition: filter 0.3s ease, transform 0.3s ease;
+}
+
+#card-1-2 {
+    display: none;
+}
+
+.scroller_card:hover > img {
+    filter: brightness(100%);
+    transform: scale(1.1);
 }
 
 /* ===== Card Text Overlay ===== */
-.scroller__card>a {
+.scroller_card > a {
   text-decoration: none;
   position: absolute;
   padding: 0.5rem;
   bottom: 1rem;
   left: 0;
-  right: 0;
   margin: 0;
   text-align: center;
   color: #fff;
   background: rgba(0, 0, 0, 0.6);
   font-size: 1rem;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, margin 0.3s ease;
 }
 
-.scroller__card>a>i {
-  margin-left: 0.5rem;
-}
-
-.scroller__card:hover>a {
-  transform: scale(1.2) translateY(-0.5rem);
+.scroller_card:hover > a {
+    margin-left: 1rem;
+    transform: scale(1.2);
 }
 
 .section-introduction {
@@ -142,9 +121,8 @@
 .section-introduction .title {
   padding: calc(var(--vh) * 1) 0;
   text-transform: uppercase;
-  border-bottom: calc(var(--vh) * 0.5) solid rgb(var(--text-2));
   color: rgb(var(--text-2));
-  font-weight: 600;
+  font-weight: 300;
   font-size: 4rem;
 }
 
@@ -154,90 +132,4 @@
   font-weight: 100;
   font-size: 1.2rem;
   color: rgb(var(--highlight-1));
-}
-
-/* ===== Scroller Overlay ===== */
-.scroller-overlay {
-  position: absolute;
-  top: 0;
-  right: 0;
-  height: calc(var(--vh) * 100);
-  width: 30vw;
-  background: rgb(var(--background));
-
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 10;
-
-  border-left: 3px solid rgb(var(--text-2));
-  opacity: 0.9;
-}
-
-/* ===== Media Queries ===== */
-@media (max-width: 1450px) {
-  .section-introduction .title {
-    font-size: 3rem;
-  }
-}
-
-@media (max-width: 1200px) {
-  .scroller-overlay {
-    background: rgb(var(--background));
-  }
-
-  .scroller__card>a { font-size: 0.9rem; }
-  .scroller-overlay {
-    flex: 1;
-    position: relative;
-    width: 100%;
-    
-    opacity: 1;
-    border: none;
-  }
-  .section-introduction {
-    flex-direction: row;
-    align-items: flex-start;
-    justify-content: center;
-  }
-  .section-introduction .title {
-    padding: 0;
-  }
-
-  .section-introduction .description {
-    margin: 0;
-    width: 50%;
-  }
-}
-
-@media (max-height: 700px) {
-
-  .section-introduction .description {
-    width: 100%;
-    font-size: 0.8rem;
-  }
-
-  .section-introduction .title {
-    font-size: 1rem;
-  }
-
-  .scroller__card>a { opacity: 0; height: 100%; top: 0; left: 0}
-}
-
-@media (max-width: 992px) {
-  .scroller__card>a { font-size: 0.85rem; }
-}
-
-@media (max-width: 768px) {
-  .scroller__card>a { font-size: 0.8rem; }
-  .section-introduction { flex-direction: column; padding: 1rem; }
-  .section-introduction .title { font-size: 1.5rem; }
-  .section-introduction .description { font-size: 1rem; width: 100%; }
-}
-
-@media (max-width: 480px) {
-  .section-introduction .title { font-size: 1rem; }
-  .section-introduction .description { font-size: 0.8rem; }
-  .scroller__card>a { font-size: 0.7rem; }
 }

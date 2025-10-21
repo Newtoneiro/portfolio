@@ -198,39 +198,39 @@ const initGreetings = () => {
 };
 
 const initScrollers = () => {
-    const scrollers = document.querySelectorAll(".scroller");
+    // const scrollers = document.querySelectorAll(".scroller");
     
-    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      addAnimation();
-      addOnHover();
-    }
+    // if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    //   addAnimation();
+    //   addOnHover();
+    // }
     
-    function addAnimation() {
-      scrollers.forEach((scroller) => {
-        scroller.setAttribute("data-animated", true);
+    // function addAnimation() {
+    //   scrollers.forEach((scroller) => {
+    //     scroller.setAttribute("data-animated", true);
     
-        const scrollerInner = scroller.querySelector(".scroller__inner");
-        const scrollerContent = Array.from(scrollerInner.children);
+    //     const scrollerInner = scroller.querySelector(".scroller__inner");
+    //     const scrollerContent = Array.from(scrollerInner.children);
     
-        scrollerContent.forEach((item) => {
-          const duplicatedItem = item.cloneNode(true);
-          duplicatedItem.setAttribute("aria-hidden", true);
-          scrollerInner.appendChild(duplicatedItem);
-        });
-      });
-    }
+    //     scrollerContent.forEach((item) => {
+    //       const duplicatedItem = item.cloneNode(true);
+    //       duplicatedItem.setAttribute("aria-hidden", true);
+    //       scrollerInner.appendChild(duplicatedItem);
+    //     });
+    //   });
+    // }
 
-    function addOnHover() {
-      const scrollerCards = document.querySelectorAll('.scroller__card');
-      scrollerCards.forEach((card) => {
-        card.addEventListener('mouseover', () => {
-          card.classList.add('highlighted');
-        });
-        card.addEventListener('mouseleave', () => {
-          card.classList.remove('highlighted');
-        })
-      })
-    }
+    // function addOnHover() {
+    //   const scrollerCards = document.querySelectorAll('.scroller__card');
+    //   scrollerCards.forEach((card) => {
+    //     card.addEventListener('mouseover', () => {
+    //       card.classList.add('highlighted');
+    //     });
+    //     card.addEventListener('mouseleave', () => {
+    //       card.classList.remove('highlighted');
+    //     })
+    //   })
+    // }
 };
 
 const initExperienceSection = () => {
