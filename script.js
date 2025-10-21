@@ -198,39 +198,60 @@ const initGreetings = () => {
 };
 
 const initScrollers = () => {
-    // const scrollers = document.querySelectorAll(".scroller");
-    
-    // if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-    //   addAnimation();
-    //   addOnHover();
-    // }
-    
-    // function addAnimation() {
-    //   scrollers.forEach((scroller) => {
-    //     scroller.setAttribute("data-animated", true);
-    
-    //     const scrollerInner = scroller.querySelector(".scroller__inner");
-    //     const scrollerContent = Array.from(scrollerInner.children);
-    
-    //     scrollerContent.forEach((item) => {
-    //       const duplicatedItem = item.cloneNode(true);
-    //       duplicatedItem.setAttribute("aria-hidden", true);
-    //       scrollerInner.appendChild(duplicatedItem);
-    //     });
-    //   });
-    // }
+  const scrollers = Array.from(document.querySelectorAll('.scroller'));
 
-    // function addOnHover() {
-    //   const scrollerCards = document.querySelectorAll('.scroller__card');
-    //   scrollerCards.forEach((card) => {
-    //     card.addEventListener('mouseover', () => {
-    //       card.classList.add('highlighted');
-    //     });
-    //     card.addEventListener('mouseleave', () => {
-    //       card.classList.remove('highlighted');
-    //     })
-    //   })
-    // }
+  scrollers.forEach(scroller => {
+    const cards = Array.from(scroller.querySelectorAll('.scroller_card'));
+    const leftBtn = scroller.querySelector('.scroll-left');
+    const rightBtn = scroller.querySelector('.scroll-right');
+
+    if (cards.length === 0) return;
+
+    let currentIndex = 0;
+
+    // Initialize first active card
+    cards.forEach((card, i) => {
+      card.classList.toggle('active', i === 0);
+    });
+
+    function showCard(index) {
+      cards.forEach((card, i) => {
+        card.classList.toggle('active', i === index);
+      });
+    }
+
+    leftBtn?.addEventListener('click', () => {
+      currentIndex = (currentIndex - 1 + cards.length) % cards.length;
+      showCard(currentIndex);
+    });
+
+    rightBtn?.addEventListener('click', () => {
+      currentIndex = (currentIndex + 1) % cards.length;
+      showCard(currentIndex);
+    });
+
+    // Store helper on scroller
+    scroller.showNextRandomCard = () => {
+      let randomIndex;
+      do {
+        randomIndex = Math.floor(Math.random() * cards.length);
+      } while (randomIndex === currentIndex);
+      currentIndex = randomIndex;
+      showCard(currentIndex);
+    };
+  });
+
+  // 🔁 Iterate through scrollers every 5 seconds
+  let currentScrollerIndex = 0;
+  setInterval(() => {
+    if (scrollers.length === 0) return;
+
+    const scroller = scrollers[currentScrollerIndex];
+    scroller.showNextRandomCard();
+
+    // move to next scroller, loop back at end
+    currentScrollerIndex = (currentScrollerIndex + 1) % scrollers.length;
+  }, 4000);
 };
 
 const initExperienceSection = () => {
