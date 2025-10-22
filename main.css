@@ -330,7 +330,15 @@ nav {
 
 @media (max-width: 478px) {
   .scroller_card > a {
-    font-size: 0.8rem;
+    font-size: 0.6rem;
+  }
+
+  .scroll-left {
+    left: 0.5rem;
+  }
+
+  .scroll-right {
+    right: 0.5rem;
   }
   
   .scroller_card > img,
@@ -410,15 +418,5 @@ nav {
   
   .section-text .description p {
     font-size: 0.7rem !important;
-  }
-
-  .scroll-left {
-    transform: rotate(90deg);
-    left: 25%;
-  }
-  
-  .scroll-right {
-    transform: rotate(-90deg);
-    right: 25%;
   }
 }
