@@ -9,6 +9,8 @@
   align-items: flex-start;
   justify-content: center;
   overflow: hidden;
+
+  padding: 2rem;
 }
 
 .experience-wrapper::before {
@@ -345,6 +347,9 @@
 }
 
 @media (max-width: 480px) {
+  .experience-wrapper {
+    padding: 0;
+  }
   .experience-title h1,
   .experience-main.contracted .experience-title h1 {
     font-size: 2rem;

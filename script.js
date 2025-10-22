@@ -65,12 +65,14 @@ async function loadSections() {
     console.error('Error loading sections:', error);
     contentContainer.innerHTML = '<p>Failed to load sections.</p>';
   }
-  // introduction contact
-  const contactButton = document.getElementById('contactButton');
-  const contactSection = document.getElementById('about-me');
-  contactButton.addEventListener('click', () => {
-    const y = contactSection.getBoundingClientRect().top + window.scrollY + yOffset;
-    window.scrollTo({top: y, behavior: 'smooth'});
+  // introduction cv download
+  const downloadButton = document.getElementById('downloadCV');
+  downloadButton.addEventListener('click', () => {
+      const link = document.createElement('a');
+      link.href = 'static/introduction/cv_eng.pdf';
+      link.download = 'cv.pdf';
+      link.click();
+      URL.revokeObjectURL(link.href);
   })
 }
 

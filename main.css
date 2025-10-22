@@ -139,6 +139,10 @@ nav {
 
 .content {
   overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+  gap: 10vh;
 }
 
 .section-pointer {
@@ -234,12 +238,12 @@ nav {
 
 .scroll-left {
   transform: rotate(90deg);
-  left: 40%;
+  left: 2rem;
 }
 
 .scroll-right {
   transform: rotate(-90deg);
-  right: 40%;
+  right: 2rem;
 }
 
 .scroll > i {
@@ -320,14 +324,8 @@ nav {
     font-size: 1rem; 
   }
   
-  .scroller_card > img,
-  .scroller_card > video {
-    filter: none;
-  }
-  
   .scroller_card > a {
     top: 0;
-    right: 0;
     transform-origin: center;
   }
 }
@@ -335,6 +333,11 @@ nav {
 @media (max-width: 478px) {
   .scroller_card > a {
     font-size: 0.8rem;
+  }
+  
+  .scroller_card > img,
+  .scroller_card > video {
+    filter: none;
   }
 }
 
@@ -347,7 +350,7 @@ nav {
   justify-content: flex-end;
   
   gap: 1rem;
-  padding: 4rem;
+  padding: 2rem;
   margin: 0;
   
   z-index: 10;
@@ -358,20 +361,20 @@ nav {
   padding: calc(var(--vh) * 1) 0;
   text-transform: uppercase;
   color: rgb(var(--text-2));
-  font-size: 4rem;
-  border-bottom: calc(var(--vh) * 0.5) solid rgb(var(--text-2));
-  border-top: calc(var(--vh) * 0.5) solid rgb(var(--text-2));
+  font-size: 2rem;
+  border-bottom: 0.2rem solid rgb(var(--text-2));
+  border-top: 0.2rem solid rgb(var(--text-2));
 }
 
 
 .section-text .description {
   text-align: justify;
   font-weight: 100;
-  font-size: 2rem;
+  font-size: 1.5rem;
   color: rgb(var(--highlight-1));
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1200px), (max-height: 800px) {
   .section-text {
     padding: 0 1rem;
     gap: 0.5rem
@@ -386,17 +389,19 @@ nav {
   }
 }
 
-@media (max-width: 478px) {
+@media (max-width: 478px), (max-height: 600px) {
   .section-text {
     padding: 0.5rem;
+    justify-content: center !important;
   }
   
   .section-text .title {
-    font-size: 1rem;
+    font-size: 1rem !important;
+    border-width: 0.1rem !important;
   }
   
   .section-text .description {
-    font-size: 0.7rem;
+    font-size: 0.7rem !important;
   }
 
   .scroll-left {
@@ -409,4 +414,3 @@ nav {
     right: 25%;
   }
 }
-
