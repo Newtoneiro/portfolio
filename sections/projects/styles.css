@@ -86,18 +86,6 @@
     grid-row: 1 / span 1;
     border: 1rem solid rgb(var(--background));
   }
-
-  .section-text {
-    padding: 0 1rem;
-  }
-
-  .section-text .title {
-    font-size: 1.5rem;
-  }
-
-  .section-text .description {
-    font-size: 1rem;
-  }
 }
 
 @media (max-width: 478px) {
@@ -136,17 +124,5 @@
     grid-column: 1 / span 1;
     grid-row: 1 / span 1;
     border: none;
-  }
-
-  .section-text {
-    padding: 0.5rem;
-  }
-  
-  .section-text .title {
-    font-size: 1rem;
-  }
-  
-  .section-text .description {
-    font-size: 0.7rem;
   }
 }
