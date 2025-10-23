@@ -10,7 +10,7 @@
   justify-content: center;
   overflow: hidden;
 
-  padding: 2rem;
+  padding: 10rem;
 }
 
 .experience-wrapper::before {
@@ -227,7 +227,11 @@
 
 /* === RESPONSIVE BREAKPOINTS === */
 
-@media (max-width: 1900px) {
+@media (max-width: 2200px), (max-height: 1200px) {
+  .experience-wrapper {
+    padding: 5rem 2rem;
+  }
+
   .experience-title h1 {
     font-size: 7rem;
   }
@@ -270,6 +274,10 @@
 }
 
 @media (max-width: 768px) {
+  .experience-wrapper {
+    padding: 0 0.5rem;
+  }
+
   .experience-wrapper,
   .experience-main,
   .experience-body,
