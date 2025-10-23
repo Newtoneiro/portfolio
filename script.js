@@ -231,26 +231,23 @@ const initScrollers = () => {
       showCard(currentIndex);
     });
     
-    scroller.showNextRandomCard = () => {
-      let randomIndex;
-      do {
-        randomIndex = Math.floor(Math.random() * cards.length);
-      } while (randomIndex === currentIndex);
-      currentIndex = randomIndex;
+    scroller.showNextCard = () => {
+      currentIndex = (currentIndex + 1) % cards.length;
       showCard(currentIndex);
     };
   });
-  
-  const autoScrollers = Array.from(document.querySelectorAll('.projects-main .scroller'));
+
+  const autoScrollers = Array.from(document.querySelectorAll('.projects-wrapper .scroller'));
   let currentScrollerIndex = 0;
+
   setInterval(() => {
     if (autoScrollers.length === 0) return;
-    
+
     const scroller = autoScrollers[currentScrollerIndex];
-    scroller.showNextRandomCard();
-    
+    scroller.showNextCard();
+
     currentScrollerIndex = (currentScrollerIndex + 1) % autoScrollers.length;
-  }, 4000);
+  }, 5000);
 };
 
 const initExperienceSection = () => {

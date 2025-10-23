@@ -157,8 +157,6 @@
   text-transform: uppercase;
   padding: calc(var(--vh) * 1) 0;
   margin: 0 1.5vw;
-  border-bottom: calc(var(--vh) * 0.5) solid rgb(var(--text-2));
-  border-top: calc(var(--vh) * 0.5) solid rgb(var(--text-2));
 }
 
 .experience-title > h1 {
@@ -328,8 +326,6 @@
   .experience-main.contracted .experience-title {
     text-transform: uppercase;
     margin: 0 1.5vw;
-    border-bottom: calc(var(--vh) * 0.5) solid rgb(var(--text-2));
-    border-top: calc(var(--vh) * 0.5) solid rgb(var(--text-2));
   }
   
   .experience-main.contracted .experience-title h1 {
