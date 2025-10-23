@@ -78,7 +78,7 @@
   }
 }
 
-@media (max-width: 476px) {
+@media (max-width: 476px), (max-height: 800px) {
   .about-me-wrapper {
     gap: 0;
     mask: none;

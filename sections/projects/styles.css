@@ -19,7 +19,7 @@
   }
 }
 
-@media (max-width: 476px) {
+@media (max-width: 476px), (max-height: 800px) {
     .projects-wrapper {
         background: none;
         mask: none;
